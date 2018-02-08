@@ -9,6 +9,8 @@ A simple python wrapper for sslwireless sms api.
 - Clone the repository
 - Install the dependencies with `pip install -r requirements.txt` or `pip install requests xmltodict`
 - Import the class and create instance to access its functions.
+### Or
+- Install the package with `pip install sslwireless-sms`
 
 ## Example
 ```python

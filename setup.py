@@ -6,7 +6,7 @@ with open('README.md') as readme:
 setup(
     name='sslwireless_sms',
     packages=['sslwireless_sms'],
-    version='0.0.1',
+    version='0.0.2',
     description='A simple python wrapper for sslwireless sms api.',
     long_description=readme,
     author='Rahul Haque',

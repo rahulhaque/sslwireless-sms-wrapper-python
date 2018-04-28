@@ -14,13 +14,14 @@ A simple python wrapper for sslwireless sms api.
 
 ## Example
 ```python
-from sslwireless_sms import SslWirelessSms
+from sslwireless_sms import SSLWirelessSMS  # previously was SslWirelessSms
 
-# username, password and sid provided by sslwireless
-SslWirelessSms = SslWirelessSms('username', 'password', 'sid')
+# username, password and sid provided by sslwireless and decode_response for receive response as json or dictionary
+sslwireless = SSLWirelessSMS('username', 'password', 'sid', decode_response=False)
+# if you want to receive response as dictionary set "decode_response=True" and for json set "decode_response=False"
 # You can change the api url if needed. i.e.
-# SslWirelessSms.url = 'new_url'
-result = SslWirelessSms.send('123456789','This is a test message.')
+# sslwireless.url = 'new_url'
+result = sslwireless.send('123456789','This is a test message.')
 
 print(result)
 ```
@@ -38,3 +39,5 @@ The output will always be in JSON format.
   "datetime": "2018-02-07 01:35AM" // datetime of process
 }
 ```
+
+#### N.B.: `SslWirelessSms` class name has changed to `SSLWirelessSMS`

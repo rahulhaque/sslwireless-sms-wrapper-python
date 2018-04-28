@@ -1,4 +1,4 @@
-# SslWireless Sms Api Wrapper for Python
+# SSLWireless SMS Api Wrapper for Python
 A simple python wrapper for sslwireless sms api.
 
 ## Requirements

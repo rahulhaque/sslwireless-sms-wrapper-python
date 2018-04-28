@@ -4,11 +4,12 @@ import xmltodict
 import json
 import datetime
 
-class SslWirelessSms:
+
+class SSLWirelessSMS:
 
     url = 'http://sms.sslwireless.com/pushapi/dynamic/server.php'
 
-    def __init__(self, username, password, sid):
+    def __init__(self, username, password, sid, decode_response=False):
         '''
         Set default authentication parameters
 
@@ -19,6 +20,7 @@ class SslWirelessSms:
         self.username = username
         self.password = password
         self.sid = sid
+        self.decode_response = decode_response
 
     def send(self, phone, message):
         '''
@@ -45,8 +47,7 @@ class SslWirelessSms:
         if 'SMSINFO' in parsed_result['REPLY']:
             
             if 'REFERENCEID' in parsed_result['REPLY']['SMSINFO']:
-
-                return json.dump({
+                response = {
                     'status': 'success',
                     'result': 'sms sent',
                     'phone': phone,
@@ -54,11 +55,11 @@ class SslWirelessSms:
                     'reference_no': parsed_result['REPLY']['SMSINFO']['CSMSID'],
                     'ssl_reference_no': parsed_result['REPLY']['SMSINFO']['REFERENCEID'],
                     'datetime': datetime.datetime.now().strftime('%Y-%m-%d %I:%M%p')
-                })
+                }
+                return self._make_response(response)
 
             elif 'SMSVALUE' in parsed_result['REPLY']['SMSINFO']:
-
-                return json.dumps({
+                response = {
                     'status': 'failed',
                     'result': 'invalid mobile or text',
                     'phone': phone,
@@ -66,11 +67,11 @@ class SslWirelessSms:
                     'reference_no': '',
                     'ssl_reference_no': '',
                     'datetime': datetime.datetime.now().strftime('%Y-%m-%d %I:%M%p')
-                })
+                }
+                return self._make_response(response)
 
             elif 'MSISDNSTATUS' in parsed_result['REPLY']['SMSINFO']:
-
-                return json.dumps({
+                response = {
                     'status': 'failed',
                     'result': 'invalid mobile',
                     'phone': phone,
@@ -78,11 +79,11 @@ class SslWirelessSms:
                     'reference_no': '',
                     'ssl_reference_no': '',
                     'datetime': datetime.datetime.now().strftime('%Y-%m-%d %I:%M%p')
-                })
+                }
+                return self._make_response(response)
 
         else:
-
-            return json.dumps({
+            response = {
                     'status': 'failed',
                     'result': 'invalid credentials',
                     'phone': phone,
@@ -90,5 +91,11 @@ class SslWirelessSms:
                     'reference_no': '',
                     'ssl_reference_no': '',
                     'datetime': datetime.datetime.now().strftime('%Y-%m-%d %I:%M%p')
-                })
+                }
+            return self._make_response(response)
+
+    def _make_response(self, data):
+        if self.decode_response:
+            return data
+        return json.dumps(data)
 

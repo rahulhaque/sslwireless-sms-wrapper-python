@@ -1,1 +1,1 @@
-from .sslwireless_sms import SslWirelessSms
+from .sslwireless_sms import SSLWirelessSMS

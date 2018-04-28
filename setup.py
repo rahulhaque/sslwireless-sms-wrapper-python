@@ -1,12 +1,12 @@
 from setuptools import setup
 
-with open('README.md') as readme:
+with open('README.rst') as readme:
     readme = readme.read()
 
 setup(
     name='sslwireless_sms',
     packages=['sslwireless_sms'],
-    version='0.0.2',
+    version='0.0.3',
     description='A simple python wrapper for sslwireless sms api.',
     long_description=readme,
     author='Rahul Haque',
@@ -17,7 +17,7 @@ setup(
     ],
     license='MIT',
     url='https://github.com/rahulhaque/sslwireless-sms-wrapper-python',
-    download_url='https://github.com/rahulhaque/sslwireless-sms-wrapper-python/archive/v0.0.1.tar.gz',
+    download_url='https://github.com/rahulhaque/sslwireless-sms-wrapper-python/archive/v0.0.3.tar.gz',
     keywords=['python', 'sslwireless', 'sms', 'api-wrapper'],
     zip_safe=False,
     classifiers=[

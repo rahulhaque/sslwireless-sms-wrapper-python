@@ -9,13 +9,14 @@ class SSLWirelessSMS:
 
     url = 'http://sms.sslwireless.com/pushapi/dynamic/server.php'
 
-    def __init__(self, username, password, sid, decode_response=False):
+    def __init__(self, username, password, sid, decode_response = False):
         '''
         Set default authentication parameters
 
         :param username:
         :param password:
         :param sid:
+        :param decode_response:
         '''
         self.username = username
         self.password = password
@@ -32,7 +33,7 @@ class SSLWirelessSMS:
         '''
         result = requests.post(
             self.url,
-            data={
+            data = {
                 'user': self.username,
                 'pass': self.password,
                 'sms[0][0]': phone,
@@ -95,6 +96,12 @@ class SSLWirelessSMS:
             return self._make_response(response)
 
     def _make_response(self, data):
+        '''
+        Decides whether the response to be json or dict
+
+        :param data:
+        :return:
+        '''
         if self.decode_response:
             return data
         return json.dumps(data)

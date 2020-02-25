@@ -1,3 +1,10 @@
+.. image:: https://img.shields.io/pypi/v/sslwireless-sms?color=yellow&label=version
+    :target: https://pypi.org/project/sslwireless-sms/0.0.3
+ 
+
+.. image:: https://pepy.tech/badge/sslwireless-sms 
+    :target: https://pypi.org/project/sslwireless-sms
+
 SSLWireless SMS Api Wrapper for Python
 ======================================
 
